@@ -1,13 +1,13 @@
 import { useState } from 'react';
 
-export default function FormularioLista({ onAgregarProducto }) {
+export default function FormularioLista({ onAgregarProducto }) { // Recibe callback del padre
   const [nombre, setNombre] = useState('');
   const [cantidad, setCantidad] = useState(1);
 
   const manejarEnvio = (e) => {
     e.preventDefault();
     if (nombre.trim()) {
-      onAgregarProducto(nombre, cantidad);
+      onAgregarProducto(nombre, cantidad); // Comunica con el servicio (Singleton)
       setNombre('');
       setCantidad(1);
     }
@@ -18,7 +18,7 @@ export default function FormularioLista({ onAgregarProducto }) {
       <input
         type="text"
         value={nombre}
-        onChange={(e) => setNombre(e.target.value)}
+        onChange={(e) => setNombre(e.target.value)} // Binding bidireccional
         placeholder="Ej: Leche, Pan..."
         required
       />
@@ -26,7 +26,7 @@ export default function FormularioLista({ onAgregarProducto }) {
         type="number"
         min="1"
         value={cantidad}
-        onChange={(e) => setCantidad(parseInt(e.target.value) || 1)}
+        onChange={(e) => setCantidad(parseInt(e.target.value) || 1)} // Garantiza número válido
       />
       <button type="submit">Añadir</button>
     </form>

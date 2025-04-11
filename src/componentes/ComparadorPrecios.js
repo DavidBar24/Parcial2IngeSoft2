@@ -1,5 +1,5 @@
 export default function ComparadorPrecios() {
-    // Estado fantasma
+    // Estado  Fantasma
     const [modoComparacion] = useState(false); 
   
     // Lógica nunca completada
